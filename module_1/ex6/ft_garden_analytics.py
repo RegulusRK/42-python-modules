@@ -135,3 +135,25 @@ class Seed(Flower):
         super().bloom()
         self.seeds = 42
 
+def show_statistics(plant: Plant) -> None:
+    print(f'Stats: {plant.stats.grow_calls} grow, {plant.stats.age_calls} age, {plant.stats.show_calls} show', end='')
+    if isinstance(plant, Tree):
+        print(f', {plant.stats.shade_calls} shade')
+
+
+if __name__ == "__main__":
+    tree = Tree('Oak', 10.5, 100, 2.2, 5.0)
+    rose = Flower('Rose', 2.5, 10, 0.5, 'Red')
+
+    for _ in range(0, 2):
+        tree.grow()
+        tree.age()
+        tree.show()
+    show_statistics(tree)
+    print('\n')
+    for _ in range(0, 2):
+        rose.grow()
+        rose.age()
+        rose.show()
+    show_statistics(rose)
+
